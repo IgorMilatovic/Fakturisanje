@@ -1,0 +1,61 @@
+﻿@model Fakturisanje.ViewModels.EditFakturaViewModel
+
+
+<h2>Details</h2>
+
+<div>
+    <h4>Faktura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Faktura.IdFakture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faktura.IdFakture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faktura.Datum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faktura.Datum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Faktura.Ukupno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faktura.Ukupno)
+        </dd>
+
+        <dt>
+            Stavke:
+        </dt>
+
+        @foreach (var it in Model.Stavka)
+        {
+            <dd>
+                @Html.DisplayNameFor(model => it.NazivStavke) - @Html.DisplayFor(model => it.NazivStavke) | 
+                @Html.DisplayNameFor(model => it.CenaStavke) - @Html.DisplayFor(model => it.CenaStavke) |
+                @Html.DisplayNameFor(model => it.kolicina) - @Html.DisplayFor(model => it.kolicina) |
+            </dd>
+
+            
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Faktura.Obrisana)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faktura.Obrisana)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Faktura.IdFakture }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

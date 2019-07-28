@@ -19,5 +19,7 @@ namespace Fakturisanje.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }
+
+        public System.Data.Entity.DbSet<Fakturisanje.ViewModels.FakturaViewModel> FakturaViewModels { get; set; }
     }
 }

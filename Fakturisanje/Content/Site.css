@@ -16,9 +16,44 @@
     white-space: normal;
 }
 
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
-select,
-textarea {
+textarea,
+select {
     max-width: 280px;
 }
+
+.cenaStavkeWrapper, .cenaStavke {
+    width: 250px;
+    display: inline;
+}
+
+.cenaStavkeLabel {
+    position: relative;
+    top: -26px;
+    left: 36px;
+}
+
+.cenaStavke {
+    width: 100px;
+}
+
+.kolicinaWrapper {
+    display: inline !important;
+    margin-left: -26px;
+}
+
+.kolicinaLabel {
+    position: relative;
+    top: -26px;
+    left: 62px;
+}
+
+.kolicinaEditor {
+    display: inline !important;
+    width: 100px !important;
+}
+
+
+

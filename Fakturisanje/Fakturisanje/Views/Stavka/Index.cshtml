@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Fakturisanje.Models.Stavka>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NazivStavke)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CenaStavke)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Obrisana)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazivStavke)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CenaStavke)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Obrisana)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdStavke }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdStavke }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdStavke })
+        </td>
+    </tr>
+}
+
+</table>

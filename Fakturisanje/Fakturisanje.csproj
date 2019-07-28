@@ -128,22 +128,57 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FakturaController.cs" />
+    <Compile Include="Controllers\FakturaViewModelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StavkaController.cs" />
+    <Compile Include="Controllers\UnosiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907261336524_FacturaViewModel.cs" />
+    <Compile Include="Migrations\201907261336524_FacturaViewModel.Designer.cs">
+      <DependentUpon>201907261336524_FacturaViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907261352331_proba1.cs" />
+    <Compile Include="Migrations\201907261352331_proba1.Designer.cs">
+      <DependentUpon>201907261352331_proba1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907261615351_cenaStavke.cs" />
+    <Compile Include="Migrations\201907261615351_cenaStavke.Designer.cs">
+      <DependentUpon>201907261615351_cenaStavke.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907271722274_skupStavkizaUnos.cs" />
+    <Compile Include="Migrations\201907271722274_skupStavkizaUnos.Designer.cs">
+      <DependentUpon>201907271722274_skupStavkizaUnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907271832508_skupKolicinazaUnos.cs" />
+    <Compile Include="Migrations\201907271832508_skupKolicinazaUnos.Designer.cs">
+      <DependentUpon>201907271832508_skupKolicinazaUnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907281451541_fvmIdChangedtoString.cs" />
+    <Compile Include="Migrations\201907281451541_fvmIdChangedtoString.Designer.cs">
+      <DependentUpon>201907281451541_fvmIdChangedtoString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907281944449_pomocnaKolicinaUStavkaModelu.cs" />
+    <Compile Include="Migrations\201907281944449_pomocnaKolicinaUStavkaModelu.Designer.cs">
+      <DependentUpon>201907281944449_pomocnaKolicinaUStavkaModelu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Faktura.cs" />
     <Compile Include="Models\InitModel.cs" />
     <Compile Include="Models\Stavka.cs" />
     <Compile Include="Models\Unosi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\EditFakturaViewModel.cs" />
+    <Compile Include="ViewModels\FakturaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\customStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -151,6 +186,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\FakturaCreate.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -161,6 +197,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\proba.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -180,6 +217,22 @@
     <Content Include="Views\Stavka\Details.cshtml" />
     <Content Include="Views\Stavka\Edit.cshtml" />
     <Content Include="Views\Stavka\Index.cshtml" />
+    <Content Include="Views\FakturaViewModels\Create.cshtml" />
+    <Content Include="Views\FakturaViewModels\Delete.cshtml" />
+    <Content Include="Views\FakturaViewModels\Details.cshtml" />
+    <Content Include="Views\FakturaViewModels\Edit.cshtml" />
+    <Content Include="Views\FakturaViewModels\Index.cshtml" />
+    <Content Include="Views\Unosi\Create.cshtml" />
+    <Content Include="Views\Unosi\Delete.cshtml" />
+    <Content Include="Views\Unosi\Details.cshtml" />
+    <Content Include="Views\Unosi\Edit.cshtml" />
+    <Content Include="Views\Unosi\Index.cshtml" />
+    <Content Include="Views\Faktura\Create.cshtml" />
+    <Content Include="Views\Faktura\Delete.cshtml" />
+    <Content Include="Views\Faktura\Details.cshtml" />
+    <Content Include="Views\Faktura\Edit.cshtml" />
+    <Content Include="Views\Faktura\Index.cshtml" />
+    <Content Include="Views\Faktura\ArhiviraneFakture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -196,6 +249,29 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907261336524_FacturaViewModel.resx">
+      <DependentUpon>201907261336524_FacturaViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907261352331_proba1.resx">
+      <DependentUpon>201907261352331_proba1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907261615351_cenaStavke.resx">
+      <DependentUpon>201907261615351_cenaStavke.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907271722274_skupStavkizaUnos.resx">
+      <DependentUpon>201907271722274_skupStavkizaUnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907271832508_skupKolicinazaUnos.resx">
+      <DependentUpon>201907271832508_skupKolicinazaUnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907281451541_fvmIdChangedtoString.resx">
+      <DependentUpon>201907281451541_fvmIdChangedtoString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907281944449_pomocnaKolicinaUStavkaModelu.resx">
+      <DependentUpon>201907281944449_pomocnaKolicinaUStavkaModelu.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

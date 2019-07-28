@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Fakturisanje.Models.Faktura>
+
+@{
+    ViewBag.Title = "Arhivirane fakture";
+}
+
+<h3>Arhivirane fakture</h3>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+@if (Model.Count() > 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                Broj
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datum)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdFakture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datum)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdFakture }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdFakture }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdFakture })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <h4>Nema arhiviranih faktura</h4>
+}
+

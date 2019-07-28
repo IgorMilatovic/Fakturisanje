@@ -1,10 +1,10 @@
 ﻿@model Fakturisanje.Models.Stavka
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalji";
 }
 
-<h2>Details</h2>
+<h3>Detalji</h3>
 
 <div>
     <h4>Stavka</h4>
@@ -37,6 +37,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdStavke }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Izmeni", "Edit", new { id = Model.IdStavke }) |
+    @Html.ActionLink("Lista stavki", "Index")
 </p>

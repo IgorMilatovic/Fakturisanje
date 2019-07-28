@@ -1,0 +1,42 @@
+﻿.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #fff;
+    opacity: 1;
+}
+
+.stavkaInputWrapper {
+    margin-bottom: 0;
+}
+
+.dodajStavku, .izabraneStavke {
+    padding: 5px;
+}
+
+.izabraneStavke {
+    padding-top: 0;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.izabraneStavkeTitle {
+    font-size: 17px !important;
+    font-weight: bold !important;
+}
+
+.dodajStavku p {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding: 3px;
+    text-align: center;
+    width: 100px;
+}
+
+.dodajStavku p:hover {
+    cursor: pointer;
+    background: lightgray;
+}
+
+#Faktura_Ukupno {
+    width: 100px !important;
+}
+
+

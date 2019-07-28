@@ -1,0 +1,82 @@
+﻿@model Fakturisanje.ViewModels.FakturaViewModel
+
+
+<h2>Kreiranje fakture</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>FakturaViewModel</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Faktura.IdFakture, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Faktura.IdFakture, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Faktura.IdFakture, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Faktura.Datum, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Faktura.Datum, new { htmlAttributes = new { @class = "form-control myDate", @type = "date" } })
+            @Html.ValidationMessageFor(model => model.Faktura.Datum, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group stavkaInputWrapper">
+        @Html.LabelFor(model => model.Stavka, "Stavka", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Stavke", null, "", htmlAttributes: new { @class = "form-control", @style = "display: inline;" })
+            <div class="cenaStavkeWrapper">
+                <label class="cenaStavkeLabel" for="cenaStavke">Cena</label>
+                <input class="form-control cenaStavke" type="text" name="cenaStavke" readonly />
+            </div>
+            <div class="kolicinaWrapper">
+                @Html.LabelFor(model => model.Unosi.Kolicina, htmlAttributes: new { @class = "control-label kolicinaLabel" })
+                @Html.EditorFor(model => model.Unosi.Kolicina, new { htmlAttributes = new { @class = "form-control kolicinaEditor", @min = "1" } })
+                @Html.ValidationMessageFor(model => model.Unosi.Kolicina, "", new { @class = "text-danger", @style = "display: block;" })
+            </div>
+            @Html.ValidationMessageFor(model => model.Stavka, "", new { @class = "text-danger stavkaValidMess" })
+        </div>
+    </div>
+    <div class="col-md-offset-2 col-md-10 dodajStavku">
+        <p class="dodajStavkuButton">dodaj stavku</p>
+    </div>
+    <div class="col-md-offset-2 col-md-10 izabraneStavke">
+        <p class="izabraneStavkeTitle">izabrane stavke:</p>
+        <div class="izabraneStavkeLista">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Faktura.Ukupno, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Faktura.Ukupno, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Faktura.Ukupno, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <input id="skupStavkizaUnos" type="hidden" name="skupStavkizaUnos" value="" />
+    <input id="skupKolicinazaUnos" type="hidden" name="skupKolicinazaUnos" value="" />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input id="submitButton" type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="~/Scripts/FakturaCreate.js"></script>
+
