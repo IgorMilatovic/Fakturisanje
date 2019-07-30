@@ -32,9 +32,9 @@
                     @Html.DisplayFor(modelItem => item.Datum)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdFakture }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdFakture }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdFakture })
+                    @Html.ActionLink("Izmeni", "Edit", new { id = item.IdFakture }) |
+                    @Html.ActionLink("Detalji", "Details", new { id = item.IdFakture }) |
+                    @Html.ActionLink("Arhiviraj", "Delete", new { id = item.IdFakture })
                 </td>
             </tr>
         }

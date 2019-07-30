@@ -22,8 +22,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Kreiraj novu", "Create", "Faktura")</li>
-                    <li>@Html.ActionLink("Lista faktura", "Index", "Faktura")</li>
-                    <li>@Html.ActionLink("Lista arhiviranih", "ArhiviraneFakture", "Faktura")</li>
+                    <li>@Html.ActionLink("Lista aktivnih faktura", "Index", "Faktura")</li>
+                    <li>@Html.ActionLink("Lista arhiviranih", "ArhiviraneFakture", "Faktura")</li> &nbsp; | &nbsp;
+                    <li>@Html.ActionLink("Stavke (artikli-usluge)", "Index", "Stavka")</li>
                 </ul>
             </div>
         </div>

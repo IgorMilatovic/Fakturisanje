@@ -18,7 +18,7 @@ namespace Fakturisanje.Controllers
         // GET: Stavka
         public async Task<ActionResult> Index()
         {
-            return View(await db.Stavka.ToListAsync());
+            return View(await db.Stavka.OrderBy(s => s.Obrisana).ToListAsync());
         }
 
         // GET: Stavka/Details/5

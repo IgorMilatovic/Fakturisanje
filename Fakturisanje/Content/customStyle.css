@@ -35,8 +35,10 @@
     background: lightgray;
 }
 
-#Faktura_Ukupno {
+#Faktura_Ukupno, .Faktura_Ukupno {
     width: 100px !important;
 }
+
+
 
 

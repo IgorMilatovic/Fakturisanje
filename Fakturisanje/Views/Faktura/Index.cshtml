@@ -4,7 +4,7 @@
     ViewBag.Title = "Lista faktura";
 }
 
-<h2>Lista faktura</h2>
+<h3>Lista faktura</h3>
 
 @*<p>
     @Html.ActionLink("Napravi novu", "Create")
@@ -20,20 +20,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdFakture)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Datum)
-        </td>
-        <td>
-            @Html.ActionLink("Izmeni", "Edit", new { id=item.IdFakture }) |
-            @Html.ActionLink("Detalji", "Details", new { id=item.IdFakture }) |
-            @Html.ActionLink("Arhiviraj", "Delete", new { id=item.IdFakture })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdFakture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datum)
+            </td>
+            <td>
+                @Html.ActionLink("Izmeni", "Edit", new { id = item.IdFakture }) |
+                @Html.ActionLink("Detalji", "Details", new { id = item.IdFakture }) |
+                @Html.ActionLink("Arhiviraj", "Delete", new { id = item.IdFakture })
+            </td>
+        </tr>
+    }
 
 </table>

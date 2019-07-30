@@ -1,5 +1,6 @@
-namespace Fakturisanje.Models
+﻿namespace Fakturisanje.Models
 {
+    using Fakturisanje.Attributes;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -18,15 +19,19 @@ namespace Fakturisanje.Models
         [Key]
         [StringLength(10)]
         [Display(Name = "Broj: ")]
+        [RegularExpression("^([a-zA-Z0-9-]+)$", ErrorMessage = "Dozvoljeni su brojevi, slova i simbol -")]
+        [Required(ErrorMessage = "Obavezan broj fakture od 10 karaktera nije unet"), MaxLength(10)]
         public string IdFakture { get; set; }
 
         [Column(TypeName = "date")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Datum: ")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        //[ProveraDatumaZaBuduceVreme(ErrorMessage = "Datum ne može biti u budućnosti")]
         public DateTime Datum { get; set; }
 
         public double Ukupno { get; set; }
 
+        [Display(Name = "Arhivirana: ")]
         public bool Obrisana { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

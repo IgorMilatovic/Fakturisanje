@@ -1,10 +1,9 @@
 ﻿@model Fakturisanje.ViewModels.EditFakturaViewModel
 
 
-<h2>Details</h2>
+<h3>Detalji fakture</h3>
 
 <div>
-    <h4>Faktura</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -14,7 +13,7 @@
         <dd>
             @Html.DisplayFor(model => model.Faktura.IdFakture)
         </dd>
-
+        <br />
         <dt>
             @Html.DisplayNameFor(model => model.Faktura.Datum)
         </dt>
@@ -22,7 +21,26 @@
         <dd>
             @Html.DisplayFor(model => model.Faktura.Datum)
         </dd>
+        <br />
+        <dt>
+            Stavke:
+        </dt>
 
+        @{ var redniBroj = 0;}
+
+        @foreach (var it in Model.Stavka)
+        {
+            redniBroj += 1;
+            <dd>
+                @redniBroj. &nbsp;
+                @Html.DisplayNameFor(model => it.NazivStavke) - @Html.DisplayFor(model => it.NazivStavke) |
+                @Html.DisplayNameFor(model => it.CenaStavke) - @Html.DisplayFor(model => it.CenaStavke) |
+                @Html.DisplayNameFor(model => it.kolicina) - @Html.DisplayFor(model => it.kolicina) |
+            </dd>
+
+
+        }
+        <br />
         <dt>
             @Html.DisplayNameFor(model => model.Faktura.Ukupno)
         </dt>
@@ -30,21 +48,7 @@
         <dd>
             @Html.DisplayFor(model => model.Faktura.Ukupno)
         </dd>
-
-        <dt>
-            Stavke:
-        </dt>
-
-        @foreach (var it in Model.Stavka)
-        {
-            <dd>
-                @Html.DisplayNameFor(model => it.NazivStavke) - @Html.DisplayFor(model => it.NazivStavke) | 
-                @Html.DisplayNameFor(model => it.CenaStavke) - @Html.DisplayFor(model => it.CenaStavke) |
-                @Html.DisplayNameFor(model => it.kolicina) - @Html.DisplayFor(model => it.kolicina) |
-            </dd>
-
-            
-        }
+        <br />
         <dt>
             @Html.DisplayNameFor(model => model.Faktura.Obrisana)
         </dt>
@@ -56,6 +60,14 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Faktura.IdFakture }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Izmeni", "Edit", new { id = Model.Faktura.IdFakture }) |
+    @Html.ActionLink("Arhiviraj", "Delete", new { id = Model.Faktura.IdFakture }) |
+    @if (Model.Faktura.Obrisana == true)
+    {
+        @Html.ActionLink("Nazad na listu", "ArhiviraneFakture")
+    }
+    else
+    {
+        @Html.ActionLink("Nazad na listu", "Index")
+    }
 </p>

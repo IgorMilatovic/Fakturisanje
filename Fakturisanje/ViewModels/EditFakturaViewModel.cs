@@ -10,7 +10,11 @@ namespace Fakturisanje.ViewModels
     {
         public string Id { get; set; }
         public Faktura Faktura { get; set; }
+        public Unosi editUnosPom { get; set; }
         public ICollection<Stavka> Stavka { get; set; }
         public ICollection<Unosi> Unosi { get; set; }
+        public string stavkeZaBrisanje { get; set; }
+        public string skupStavkizaUnos { get; set; }
+        public string skupKolicinazaUnos { get; set; }
     }
 }

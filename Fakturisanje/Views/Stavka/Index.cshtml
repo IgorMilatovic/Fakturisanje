@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Fakturisanje.Models.Stavka>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista stavki";
 }
 
-<h2>Index</h2>
+<h3>Lista stavki</h3>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Kreiraj novu", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,9 +35,8 @@
             @Html.DisplayFor(modelItem => item.Obrisana)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdStavke }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdStavke }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdStavke })
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.IdStavke }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.IdStavke })
         </td>
     </tr>
 }

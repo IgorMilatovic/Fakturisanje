@@ -1,60 +1,117 @@
-﻿@model Fakturisanje.Models.Faktura
+﻿@model Fakturisanje.ViewModels.EditFakturaViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Izmene fakture";
 }
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/customStyle.css" rel="stylesheet" />
 
-<h2>Edit</h2>
+<h3>Izmene fakture</h3>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Faktura</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.IdFakture)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Datum, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Faktura.IdFakture, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Datum, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Datum, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Faktura.IdFakture, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Faktura.IdFakture, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Faktura.Datum, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Faktura.Datum, new { htmlAttributes = new { @class = "form-control myDateEdit Faktura_Datum" } })
+                @Html.ValidationMessageFor(model => model.Faktura.Datum, "", new { @class = "text-danger" })
+                <p class="text-danger vremeValidMessEdit">@Html.Raw(ViewBag.GreskaDatum)</p>
+            </div>
+        </div>
+        <div class="form-group stavkaInputWrapper">
+            @Html.LabelFor(model => model.Stavka, "Nova stavka: ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Stavke", null, "Izaberi stavku", htmlAttributes: new { @class = "form-control Stavke StavkeEdit", @style = "display: inline;" })
+                <div class="cenaStavkeWrapper">
+                    <label class="cenaStavkeLabel" for="cenaStavke">Cena</label>
+                    <input class="form-control cenaStavkeEdit" type="text" name="cenaStavke" readonly />
+                </div>
+                <div class="kolicinaWrapper">
+                    @Html.LabelFor(model => model.editUnosPom.Kolicina, htmlAttributes: new { @class = "control-label kolicinaLabel" })
+                    @Html.EditorFor(model => model.editUnosPom.Kolicina, new { htmlAttributes = new { @class = "form-control kolicinaEditor", @min = "1" } })
+                    @Html.ValidationMessageFor(model => model.editUnosPom.Kolicina, "", new { @class = "text-danger", @style = "display: block;" })
+                </div>
+                @Html.ValidationMessageFor(model => model.Stavka, "", new { @class = "text-danger stavkaValidMessEdit" })
+            </div>
+        </div>
+        <div class="col-md-offset-2 col-md-10 dodajStavku">
+            <p class="dodajStavkuButtonEdit">dodaj stavku</p>
+        </div>
+        <div class="col-md-offset-2 col-md-10 izabraneStavke">
+            <p class="izabraneStavkeTitle">Izabrane stavke:</p>
+            <div class="izabraneStavkeListaEdit">
+                @{
+                    var redniBr = 0;
+                }
+                @foreach (var it in Model.Stavka)
+                {
+                    redniBr += 1;
+                    <div class="divPostojeceStavke divPostojeceStavke_@redniBr">
+                        <span class="redniBroj">@redniBr.</span><span> @it.NazivStavke &nbsp; |&nbsp; cena: @it.CenaStavke &nbsp; |&nbsp; kol: @it.kolicina&nbsp; - &nbsp;</span>
+                        <span class="ukloniPostojeceStavke_@redniBr" style="color: orange; cursor: pointer;">ukloni</span>
+                        <input class="idPostojeceStavke idPostojeceStavke_@redniBr" type="hidden" value="@it.IdStavke">
+                        <input class="cenaPostojeceStavke_@redniBr" type="hidden" value="@it.CenaStavke">
+                        <input class="kolicinaPostojeceStavke_@redniBr" type="hidden" value="@it.kolicina">
+                    </div>
+                }
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Ukupno, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Faktura.Ukupno, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Ukupno, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Ukupno, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Faktura.Ukupno, new { htmlAttributes = new { @class = "form-control Faktura_Ukupno", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Faktura.Ukupno, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Obrisana, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Faktura.Obrisana, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.Obrisana)
-                    @Html.ValidationMessageFor(model => model.Obrisana, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Faktura.Obrisana)
+                    @Html.ValidationMessageFor(model => model.Faktura.Obrisana, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
+        <input class="stavkeZaBrisanje" type="hidden" name="stavkeZaBrisanje" value="" />
+        <input class="skupStavkizaUnos" type="hidden" name="skupStavkizaUnos" value="" />
+        <input class="skupKolicinazaUnos" type="hidden" name="skupKolicinazaUnos" value="" />
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input id="submitButtonEdit" type="submit" value="Izmeni" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Nazad na listu", "Index")
 </div>
+<script src="~/Scripts/EditFaktura.js"></script>
+<script src="~/Scripts/EditUkloniPostojeceStavke.js"></script>
+<script src="~/Scripts/EditCenaAjax.js"></script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+
+

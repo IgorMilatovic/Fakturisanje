@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attributes\ProveraDatumaZaBuduceVremeAttribute.cs" />
     <Compile Include="Controllers\FakturaController.cs" />
     <Compile Include="Controllers\FakturaViewModelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -186,6 +187,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\EditCenaAjax.js" />
+    <Content Include="Scripts\EditUkloniPostojeceStavke.js" />
     <Content Include="Scripts\FakturaCreate.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -197,7 +200,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\proba.js" />
+    <Content Include="Scripts\EditFaktura.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -217,16 +220,6 @@
     <Content Include="Views\Stavka\Details.cshtml" />
     <Content Include="Views\Stavka\Edit.cshtml" />
     <Content Include="Views\Stavka\Index.cshtml" />
-    <Content Include="Views\FakturaViewModels\Create.cshtml" />
-    <Content Include="Views\FakturaViewModels\Delete.cshtml" />
-    <Content Include="Views\FakturaViewModels\Details.cshtml" />
-    <Content Include="Views\FakturaViewModels\Edit.cshtml" />
-    <Content Include="Views\FakturaViewModels\Index.cshtml" />
-    <Content Include="Views\Unosi\Create.cshtml" />
-    <Content Include="Views\Unosi\Delete.cshtml" />
-    <Content Include="Views\Unosi\Details.cshtml" />
-    <Content Include="Views\Unosi\Edit.cshtml" />
-    <Content Include="Views\Unosi\Index.cshtml" />
     <Content Include="Views\Faktura\Create.cshtml" />
     <Content Include="Views\Faktura\Delete.cshtml" />
     <Content Include="Views\Faktura\Details.cshtml" />

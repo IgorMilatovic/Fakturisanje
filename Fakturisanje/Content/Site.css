@@ -24,7 +24,7 @@ select {
     max-width: 280px;
 }
 
-.cenaStavkeWrapper, .cenaStavke {
+.cenaStavkeWrapper, .cenaStavke, .cenaStavkeEdit {
     width: 250px;
     display: inline;
 }
@@ -32,10 +32,10 @@ select {
 .cenaStavkeLabel {
     position: relative;
     top: -26px;
-    left: 36px;
+    left: 40px;
 }
 
-.cenaStavke {
+.cenaStavke, .cenaStavkeEdit {
     width: 100px;
 }
 
